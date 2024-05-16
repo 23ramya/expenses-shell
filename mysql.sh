@@ -43,7 +43,7 @@ else
          VALIDATE $? "setting up root password"
 
          #Below code will be useful for idempotent nature 
-         mysqh -h db.ramya.cloud -uroot -p${mysql_root_password} -e 'show databases;' &>>LOGFILE
+         mysqh -h DB.ramya.cloud -uroot -p${mysql_root_password} -e 'show databases;' &>>LOGFILE
 
          if [ $? -ne 0 ]
 
