@@ -42,8 +42,11 @@ else
 
          #Below code will be useful for idempotent nature 
          mysqh -h db.ramya.cloud -uroot -pExpenseApp@1 -e 'show databases;' &>>LOGFILE
-         if[ $? -ne 0 ]
+
+         if [ $? -ne 0 ]
+
          then
+         
           mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOGFILE
           VALIDATE $? "MYSQL ROOT PASSWORD setup"
 
