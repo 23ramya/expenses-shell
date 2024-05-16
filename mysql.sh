@@ -39,8 +39,8 @@ else
          systemctl start mysqld &>>$LOGFILE
          VALIDATE $? "STARTING MYSQL SERVER"
 
-         mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOGFILE
-         VALIDATE $? "setting up root password"
+         #mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOGFILE
+        # VALIDATE $? "setting up root password"
 
          #Below code will be useful for idempotent nature 
          mysqh -h db.ramya.cloud -uroot -p${mysql_root_password} -e 'show databases;' &>>LOGFILE
