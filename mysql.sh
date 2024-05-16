@@ -50,7 +50,7 @@ else
          then
 
           mysql_secure_installation --set-root-pass ${mysql_root_password}  &>>LOGFILE
-          VALIDATE $? "MYSQL ROOT PASSWORD setup"
+          VALIDATE $? "MYSQL ROOT PASSWORD SETUP"
 
           else
           echo -e "MYSQL root password is already setup ...$Y SKIPPING $N"
