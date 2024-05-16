@@ -25,17 +25,21 @@ then
     exit 1 # manually exit if error comes.
 else
     echo "You are super user."
-fi
 
-for i in $@
-do
-    echo "package to install: $i"
-    dnf list installed $i &>>$LOGFILE
-    if [ $? -eq 0 ]
-    then
-        echo -e "$i already installed...$Y SKIPPING $N"
-    else
-        dnf install $i -y &>>$LOGFILE
-        VALIDATE $? "Installation of $i"
     fi
-done
+
+        dnf install mysql-server -y &>>$LOGFILE
+        VALIDATE $? "Installing MYSQL SERVER"
+
+        systemctl enable mysqld &>>$LOGFILE
+        VALIDATE $? "ENABLING MYSQL SERVER"
+
+         systemctl start mysqld &>>$LOGFILE
+         VALIDATE $? "STARTING MYSQL SERVER"
+
+         mysql_secure_installation --set-root-pass ExpenseApp@1 &>>LOGFILE
+         VALIDATE $? "setting up root password"
+
+         #Below code will be useful for idempotent nature 
+         
+   
